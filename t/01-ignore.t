@@ -7,7 +7,6 @@ use Test::Exception;
 
 use Memoize;
 use Memoize::HashKey::Ignore;
-use Data::Dumper;
 
 my $expensive_count = 0;
 

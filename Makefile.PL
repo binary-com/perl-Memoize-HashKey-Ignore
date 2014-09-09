@@ -15,8 +15,8 @@ WriteMakefile(
         'ExtUtils::MakeMaker' => 0,
     },
     BUILD_REQUIRES => {
-	'Test::NoWarnings'   => 0,
         'Test::More'         => 0,
+        'Test::NoWarnings'   => 0,
         'Test::FailWarnings' => 0,
         'Test::Exception'    => 0,
     },

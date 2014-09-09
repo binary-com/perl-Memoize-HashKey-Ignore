@@ -7,7 +7,6 @@ use Test::Exception;
 
 use Memoize::HashKey::Ignore;
 use Memoize;
-use Data::Dumper;
 
 throws_ok { tie my %scalar_cache => 'Memoize::HashKey::Ignore', IGNORE => {}; }
     qr/IGNORE argument must be a code ref/,
