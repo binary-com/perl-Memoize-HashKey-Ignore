@@ -13,7 +13,7 @@ Memoize::HashKey::Ignore - allow certain keys not to be memoized.
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -35,30 +35,26 @@ This module will allow you to memoize the entire function with splitting it into
 =cut
 
 sub TIEHASH {
-    my ( $package, %args ) = @_;
+    my ($package, %args) = @_;
     my $cache = $args{HASH} || {};
 
-    if ( $args{IGNORE} and not ref $args{IGNORE} eq 'CODE' ) {
+    if ($args{IGNORE} and not ref $args{IGNORE} eq 'CODE') {
         die 'Memoize::HashKey::Ignore: IGNORE argument must be a code ref.';
     }
-    if ( $args{TIE} ) {
-        my ( $module, @opts ) = @{ $args{TIE} };
+    if ($args{TIE}) {
+        my ($module, @opts) = @{$args{TIE}};
         my $modulefile = $module . '.pm';
         $modulefile =~ s{::}{/}g;
         try { require $modulefile }
         catch {
-            die 'Memoize::HashKey::Ignore: Could not load hash tie module "'
-              . $module . '": '
-              . $_;
+            die 'Memoize::HashKey::Ignore: Could not load hash tie module "' . $module . '": ' . $_;
         };
         my $rc = (
             tie %$cache => $module,
             @opts
         );
-        if ( not $rc ) {
-            die 'Memoize::HashKey::Ignore Could not tie hash to "'
-              . $module . '": '
-              . $@;
+        if (not $rc) {
+            die 'Memoize::HashKey::Ignore Could not tie hash to "' . $module . '": ' . $@;
         }
     }
 
@@ -67,25 +63,25 @@ sub TIEHASH {
 }
 
 sub EXISTS {
-    my ( $self, $key ) = @_;
-    return ( exists $self->{CACHE}->{$key} ) ? 1 : 0;
+    my ($self, $key) = @_;
+    return (exists $self->{CACHE}->{$key}) ? 1 : 0;
 }
 
 sub FETCH {
-    my ( $self, $key ) = @_;
+    my ($self, $key) = @_;
     return $self->{CACHE}->{$key};
 }
 
 sub CLEAR {
-    my ( $self ) = @_;
+    my ($self) = @_;
     $self->{CACHE} = {};
     return $self->{CACHE};
 }
 
 sub STORE {
-    my ( $self, $key, $value ) = @_;
+    my ($self, $key, $value) = @_;
 
-    if ( not defined $self->{IGNORE} or not &{ $self->{IGNORE} }($key) ) {
+    if (not defined $self->{IGNORE} or not &{$self->{IGNORE}}($key)) {
         $self->{CACHE}->{$key} = $value;
     }
 
