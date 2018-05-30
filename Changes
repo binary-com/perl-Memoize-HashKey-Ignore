@@ -1,6 +1,7 @@
 Revision history for Memoize-HashKey-Ignore
 
 {{$NEXT}}
+        Fix typo in dist name (GH #7)
 
 0.03      2017-02-21 02:18:31+00:00 UTC
         Switch to dzil
