@@ -1,6 +1,8 @@
 Revision history for Memoize-HashKey-Ignore
 
 {{$NEXT}}
+
+0.04      2018-06-04 09:37:35+08:00 Asia/Manila
         Fix typo in dist name (GH #7)
 
 0.03      2017-02-21 02:18:31+00:00 UTC
