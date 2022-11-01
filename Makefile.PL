@@ -2,23 +2,25 @@
 use strict;
 use warnings;
 
-use 5.014000;
+use 5.006;
 
-use ExtUtils::MakeMaker 6.48;
+use ExtUtils::MakeMaker 7.64;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "allow certain keys not to be memoized.",
   "AUTHOR" => "binary.com <BINARY\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.48"
+    "ExtUtils::MakeMaker" => "7.64"
   },
   "DISTNAME" => "Memoize-HashKey-Ignore",
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.014000",
+  "MIN_PERL_VERSION" => "5.006",
   "NAME" => "Memoize::HashKey::Ignore",
   "PREREQ_PM" => {
     "Memoize" => 0,
-    "Syntax::Keyword::Try" => 0
+    "Syntax::Keyword::Try" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
@@ -31,7 +33,7 @@ my %WriteMakefileArgs = (
     "Test::More" => "0.94",
     "Test::NoWarnings" => 0
   },
-  "VERSION" => "0.04",
+  "VERSION" => "0.06",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -49,7 +51,9 @@ my %FallbackPrereqs = (
   "Test::Exception" => 0,
   "Test::FailWarnings" => 0,
   "Test::More" => "0.94",
-  "Test::NoWarnings" => 0
+  "Test::NoWarnings" => 0,
+  "strict" => 0,
+  "warnings" => 0
 );
 
 

@@ -1,6 +1,8 @@
 Revision history for Memoize-HashKey-Ignore
 
 {{$NEXT}}
+
+0.05      2022-11-01 12:47:47+00:00 UTC
         - use Syntax::Keyword::try
 
 0.04      2018-06-04 09:37:35+08:00 Asia/Manila

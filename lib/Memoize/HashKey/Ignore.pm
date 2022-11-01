@@ -13,7 +13,7 @@ Memoize::HashKey::Ignore - allow certain keys not to be memoized.
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 =head1 SYNOPSIS
 
